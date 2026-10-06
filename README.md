@@ -1,72 +1,144 @@
-# DrowzeFree 😴📱  
-A privacy-conscious Android app that detects **driver drowsiness** using real-time facial landmarks and alerts the user with alarms, vibration, and SOS messages — all while running in the background.
+# 🚗 DrowzeFree – Driver Drowsiness Detection & Safety System
+
+DrowzeFree is an Android-based driver safety application designed to detect driver drowsiness in real time and take safety actions when signs of fatigue are detected.
+
+The application uses the device camera and face-landmark-based detection to monitor the driver's condition. When drowsiness is detected, the system can provide warnings and, if the driver does not respond, send an emergency SMS to a saved emergency contact.
 
 ---
 
-## 🚀 Features
+## 📱 Project Overview
 
-- 🎯 Real-time detection of **closed eyes** (EAR) and **yawning** (MAR)
-- 🧠 Uses **MediaPipe Face Landmarker** for facial landmark tracking
-- 📣 Plays **alarm sound** and triggers **vibration** when drowsy
-- 📍 Sends **SOS alerts with GPS location** to emergency contacts
-- 🧾 Lets user **add/manage emergency contacts** in-app
-- ⚙️ Runs as a **background foreground service** to keep detection active even when minimized
-- 🧠 Uses lightweight Android services, no cloud dependencies
+Driver drowsiness is one of the major causes of road accidents, especially during long-distance and night-time driving.
+
+DrowzeFree aims to provide an affordable software-based safety solution using a smartphone camera.
+
+The application continuously monitors the driver's face and detects signs associated with drowsiness. It also provides emergency communication and safety statistics.
 
 ---
 
-## 🧠 Tech Stack
+## ✨ Features
 
-| Technology                   | Purpose                                   |
-|-----------------------------|-------------------------------------------|
-| Android (Kotlin)            | App logic and UI                          |
-| MediaPipe Face Landmarker   | Real-time eye/mouth landmark detection     |
-| CameraX                     | Camera preview and frame capture          |
-| SharedPreferences + Gson    | Local contact storage                     |
-| SmsManager                  | Sends emergency SMS alerts                |
-| FusedLocationProviderClient| Fetches GPS location                      |
-| RecyclerView + Adapter      | Dynamic contact list                      |
-| Notification / ForegroundService | Keeps detection alive in background   |
+### 👁️ Real-Time Drowsiness Detection
+
+- Uses the smartphone camera for driver monitoring.
+- Uses facial landmark detection to analyze the driver's face.
+- Detects signs of driver fatigue/drowsiness.
+- Provides an alert when drowsiness is detected.
+
+### 🚨 Drowsiness Warning System
+
+When drowsiness is detected:
+
+1. The system detects the driver's drowsy state.
+2. A warning/alert is triggered.
+3. The driver gets an opportunity to respond.
+4. If the driver does not respond within the configured period, the emergency procedure is triggered.
+
+### 📩 Emergency SMS
+
+DrowzeFree includes an emergency contact system.
+
+Users can:
+
+- Add emergency contacts.
+- View saved contacts.
+- Delete emergency contacts.
+- Use the saved contact during an emergency situation.
+
+If the driver remains unresponsive after a drowsiness warning, the application can send an emergency SMS to the configured emergency contact.
+
+### 👥 Emergency Contact Management
+
+The application provides a dedicated contact management screen.
+
+Users can:
+
+- Add contacts
+- View contacts
+- Delete contacts
+- Manage emergency contacts used by the safety system
+
+### 📊 Safety Report
+
+DrowzeFree includes a Safety Report screen to provide information about the driver's safety activity.
+
+The application maintains safety-related information that can be displayed through the report interface.
+
+### 📈 Safety Statistics
+
+The project also includes safety statistics functionality to help the user understand their driving/drowsiness activity.
+
+### 🔔 Notifications
+
+The application uses Android notifications to provide important safety-related alerts to the user.
+
+### 📱 Background Detection Service
+
+The application uses an Android detection service to handle the drowsiness monitoring process.
+
+This allows the monitoring functionality to operate through a dedicated service rather than being limited only to the main screen.
 
 ---
 
-## 📱 Permissions Required
+## 🛠️ Technologies Used
 
-- `CAMERA` – for capturing face in real time  
-- `SEND_SMS` – to send SOS messages  
-- `VIBRATE` – to trigger physical alerts  
-- `ACCESS_FINE_LOCATION` / `ACCESS_COARSE_LOCATION` – for GPS  
-- `FOREGROUND_SERVICE` – to run detection even when minimized
+### Android Development
 
----
+- Kotlin
+- Android Studio
+- Android SDK
+- Gradle
 
-## 📦 How to Run
+### Computer Vision / Machine Learning
 
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/visruthnr/DrowzeFree.git
-   ```
+- MediaPipe Face Landmarker
+- Face landmark detection
+- Real-time camera processing
 
-2. Open the project in **Android Studio**
+### Android Components
 
-3. Connect a real Android device via USB
-
-4. Run the app and **grant all requested permissions**
-
-5. Tap **“Manage Contacts”** to add emergency numbers
-
-6. The app starts detecting automatically —  
-   if drowsiness is detected continuously, **SOS will be triggered**
-
-
+- Activities
+- Services
+- Broadcast Receivers
+- Notifications
+- SMS functionality
+- Runtime permissions
+- Android UI layouts
 
 ---
 
+## 🏗️ Project Architecture
 
-
-
-
-   
-
-
+```text
+DrowzeFree
+│
+├── app/
+│   └── src/
+│       └── main/
+│           ├── java/
+│           │   └── com/example/drowsinessdetection/
+│           │       ├── MainActivity.kt
+│           │       ├── DetectionService.kt
+│           │       ├── ContactsActivity.kt
+│           │       ├── ContactsAdapter.kt
+│           │       ├── Contact.kt
+│           │       ├── SafetyReportActivity.kt
+│           │       ├── SafetyStats.kt
+│           │       ├── SmsSentReceiver.kt
+│           │       └── Utils.kt
+│           │
+│           ├── res/
+│           │   ├── drawable/
+│           │   ├── layout/
+│           │   ├── mipmap/
+│           │   └── values/
+│           │
+│           └── AndroidManifest.xml
+│
+├── face_landmarker.task
+├── gradle/
+├── build.gradle
+├── settings.gradle
+├── gradle.properties
+└── README.md
    
